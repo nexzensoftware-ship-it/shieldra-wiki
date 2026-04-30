@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Shieldra AI — Primary Icon (Dark Background) -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0C1222"/>
+      <stop offset="100%" stop-color="#162032"/>
+    </linearGradient>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Background with visible border -->
+  <rect width="120" height="120" rx="26" fill="url(#bg)" stroke="url(#g1)" stroke-width="1.5" stroke-opacity="0.6"/>
+  <!-- Shield outline -->
+  <path d="M60 18L28 34V60C28 78 41 93 60 98C79 93 92 78 92 60V34L60 18Z" stroke="url(#g1)" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <!-- Inner glow -->
+  <circle cx="60" cy="55" r="20" fill="#22D3EE" opacity="0.06"/>
+  <!-- Network nodes — boosted opacity -->
+  <circle cx="60" cy="30" r="4" fill="url(#g2)"/>
+  <circle cx="45" cy="42" r="3.5" fill="url(#g2)" opacity="0.9"/>
+  <circle cx="60" cy="42" r="3.5" fill="url(#g2)"/>
+  <circle cx="75" cy="42" r="3.5" fill="url(#g2)" opacity="0.9"/>
+  <circle cx="38" cy="55" r="3" fill="url(#g2)" opacity="0.7"/>
+  <circle cx="52" cy="55" r="3.5" fill="url(#g2)"/>
+  <circle cx="68" cy="55" r="3.5" fill="url(#g2)"/>
+  <circle cx="82" cy="55" r="3" fill="url(#g2)" opacity="0.7"/>
+  <circle cx="45" cy="68" r="3" fill="url(#g2)" opacity="0.8"/>
+  <circle cx="60" cy="68" r="4" fill="url(#g2)"/>
+  <circle cx="75" cy="68" r="3" fill="url(#g2)" opacity="0.8"/>
+  <circle cx="52" cy="80" r="2.5" fill="url(#g2)" opacity="0.6"/>
+  <circle cx="60" cy="80" r="3" fill="url(#g2)" opacity="0.8"/>
+  <circle cx="68" cy="80" r="2.5" fill="url(#g2)" opacity="0.6"/>
+  <circle cx="60" cy="90" r="2" fill="url(#g2)" opacity="0.5"/>
+  <!-- Connection lines — boosted opacity -->
+  <line x1="60" y1="30" x2="45" y2="42" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="60" y1="30" x2="75" y2="42" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="60" y1="30" x2="60" y2="42" stroke="#22D3EE" stroke-width="1" opacity="0.5"/>
+  <line x1="45" y1="42" x2="38" y2="55" stroke="#22D3EE" stroke-width="1" opacity="0.35"/>
+  <line x1="45" y1="42" x2="52" y2="55" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="60" y1="42" x2="52" y2="55" stroke="#22D3EE" stroke-width="1" opacity="0.45"/>
+  <line x1="60" y1="42" x2="68" y2="55" stroke="#22D3EE" stroke-width="1" opacity="0.45"/>
+  <line x1="75" y1="42" x2="68" y2="55" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="75" y1="42" x2="82" y2="55" stroke="#22D3EE" stroke-width="1" opacity="0.35"/>
+  <line x1="52" y1="55" x2="45" y2="68" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="52" y1="55" x2="60" y2="68" stroke="#22D3EE" stroke-width="1" opacity="0.45"/>
+  <line x1="68" y1="55" x2="60" y2="68" stroke="#22D3EE" stroke-width="1" opacity="0.45"/>
+  <line x1="68" y1="55" x2="75" y2="68" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="45" y1="68" x2="52" y2="80" stroke="#22D3EE" stroke-width="1" opacity="0.35"/>
+  <line x1="60" y1="68" x2="60" y2="80" stroke="#22D3EE" stroke-width="1" opacity="0.4"/>
+  <line x1="75" y1="68" x2="68" y2="80" stroke="#22D3EE" stroke-width="1" opacity="0.35"/>
+  <line x1="60" y1="80" x2="60" y2="90" stroke="#22D3EE" stroke-width="1" opacity="0.3"/>
+</svg>

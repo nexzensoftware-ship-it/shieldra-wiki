@@ -64,7 +64,7 @@ SEO, go-to-market, brand assets.
   - [SEO-IMPLEMENTATION-PLAN.md](marketing/seo/SEO-IMPLEMENTATION-PLAN.md)
   - [SEO-FIXES-IMPLEMENTED.md](marketing/seo/SEO-FIXES-IMPLEMENTED.md)
 - [go-to-market/](marketing/go-to-market/) — outreach lists, strategy, listing packs
-- [brand/](marketing/brand/) — social graphics, launch assets (LinkedIn infographic, etc.)
+- [brand/](marketing/brand/) — social graphics, launch assets, logos, listing imagery
 
 ### [archive/](archive/)
 Historic snapshots kept for reference. Not actively maintained.
