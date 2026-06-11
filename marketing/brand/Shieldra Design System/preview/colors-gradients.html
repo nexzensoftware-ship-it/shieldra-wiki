@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body { margin: 0; padding: 20px; background: #fff; font-family: var(--font-sans); color: var(--surface-900); }
+.eyebrow { margin: 0 0 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--surface-500); }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+.bar {
+  height: 56px; border-radius: 12px; position: relative; overflow: hidden;
+  border: 1px solid var(--surface-100);
+}
+.bar .label {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; padding: 0 16px;
+  color: var(--surface-800); font-weight: 600; font-size: 13px;
+  gap: 10px;
+}
+.bar .mono {
+  font-family: var(--font-mono); font-weight: 500; font-size: 11px;
+  color: var(--surface-500);
+  margin-left: auto;
+}
+.chip {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,0.06);
+}
+/* Subtle gradient recipes — lower saturation, calmer transitions */
+.primary  { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+.readiness{ background: linear-gradient(135deg, #818cf8, #60a5fa, #22d3ee); }
+.score    { background: linear-gradient(135deg, #4ade80, #22c55e); }
+.logo     { background: linear-gradient(180deg, #0C1222, #162032); }
+.node     { background: linear-gradient(135deg, #22d3ee, #3b82f6); }
+.surface  { background: linear-gradient(180deg, #f8fafc, #eef2f7); }
+
+.sub { margin: 12px 0 0; color: var(--surface-500); font-size: 11px; line-height: 1.5; }
+</style></head><body>
+<p class="eyebrow">Signature gradients — Subtle</p>
+<div class="stack">
+  <div class="bar">
+    <span class="label">
+      <span class="chip primary"></span>
+      Primary · CTA / highlighted word
+      <span class="mono">brand-500 → indigo-500 · 135°</span>
+    </span>
+  </div>
+  <div class="bar">
+    <span class="label">
+      <span class="chip readiness"></span>
+      Readiness · progress meters
+      <span class="mono">indigo-400 → blue-400 → cyan-400</span>
+    </span>
+  </div>
+  <div class="bar">
+    <span class="label">
+      <span class="chip score"></span>
+      Score ring · gauge stroke
+      <span class="mono">green-400 → green-500</span>
+    </span>
+  </div>
+  <div class="bar">
+    <span class="label">
+      <span class="chip node"></span>
+      Node accent · icon tiles, live dots
+      <span class="mono">cyan-400 → blue-500</span>
+    </span>
+  </div>
+  <div class="bar">
+    <span class="label">
+      <span class="chip logo"></span>
+      Logo plate · hero surface
+      <span class="mono">#0C1222 → #162032 · 180°</span>
+    </span>
+  </div>
+  <div class="bar">
+    <span class="label">
+      <span class="chip surface" style="box-shadow:inset 0 0 0 1px #e2e8f0"></span>
+      Surface · section backgrounds
+      <span class="mono">slate-50 → slate-100 · 180°</span>
+    </span>
+  </div>
+</div>
+<p class="sub">Two-stop gradients, adjacent hues, no shimmer. Use at ≤ 20% surface area. Avoid stacking gradients within the same viewport.</p>
+</body></html>

@@ -1,0 +1,48 @@
+{
+  "$comment": "Narration script for the 32-second 'Understanding HIPAA — Regulations & Fines' explainer. Scene boundaries match the <Sprite> ranges in scenes.jsx (HipaaVideo). Times are in animation-seconds; the rendered MP4 trims TRIM_HEAD_S=0 so narration aligns 1:1 with the MP4 timeline.",
+  "name": "hipaa-fines",
+  "totalDurationSec": 32,
+  "outputDir": "HIPAA fines/audio",
+  "trackOutput": "out/hipaa-fines-narration.mp3",
+  "scenes": [
+    {
+      "id": "title",
+      "start": 0.8,
+      "end": 4.2,
+      "text": "HIPAA — the regulations, and the fines."
+    },
+    {
+      "id": "what",
+      "start": 4.4,
+      "end": 9.4,
+      "text": "Three rules: privacy, security, and breach notification."
+    },
+    {
+      "id": "who",
+      "start": 9.6,
+      "end": 13.6,
+      "text": "Plans, providers, clearinghouses, and business associates all comply."
+    },
+    {
+      "id": "fines",
+      "start": 13.8,
+      "end": 21.4,
+      "rate": "+5%",
+      "text": "Penalties hit four tiers — from one-thirty-seven per violation, up to two million dollars a year."
+    },
+    {
+      "id": "realworld",
+      "start": 21.6,
+      "end": 27.4,
+      "rate": "+10%",
+      "text": "Anthem alone paid sixteen million."
+    },
+    {
+      "id": "outro",
+      "start": 27.6,
+      "end": 32,
+      "rate": "+5%",
+      "text": "Shieldra — the AI that shields your business."
+    }
+  ]
+}

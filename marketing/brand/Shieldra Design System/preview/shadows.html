@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:24px;background:var(--surface-50);font-family:var(--font-sans)}
+.eyebrow{margin:0 0 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-500)}
+.row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border-radius:14px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--surface-700);font-family:var(--font-mono)}
+.card b{font-family:var(--font-sans);font-weight:700;color:var(--surface-900);font-size:12px;margin-bottom:3px}
+</style></head><body>
+<p class="eyebrow">Shadow & glow system</p>
+<div class="row">
+ <div class="card" style="box-shadow:var(--shadow-sm)"><b>sm</b>1px 2px rgba(0,0,0,.05)</div>
+ <div class="card" style="box-shadow:var(--shadow-glass)"><b>glass</b>0 8px 32px / .08</div>
+ <div class="card" style="box-shadow:var(--shadow-glass-lg)"><b>glass-lg</b>0 16px 64px / .10</div>
+ <div class="card" style="box-shadow:var(--shadow-elevated)"><b>elevated</b>0 20px 60px / .12</div>
+ <div class="card" style="box-shadow:var(--shadow-card-hover)"><b>card-hover</b>0 30px 80px / .18</div>
+ <div class="card" style="box-shadow:var(--shadow-glow)"><b>glow (brand)</b>0 0 20px / .15</div>
+ <div class="card" style="box-shadow:var(--shadow-glow-lg)"><b>glow-lg</b>0 0 40px / .20</div>
+ <div class="card" style="box-shadow:var(--shadow-glow-accent)"><b>glow-accent</b>0 0 20px cyan</div>
+</div>
+</body></html>

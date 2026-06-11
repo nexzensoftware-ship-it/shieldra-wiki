@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: #fff; font-family: var(--font-sans); }
+  .row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; }
+  .swatch { border-radius: 8px; aspect-ratio: 1/1.1; display: flex; flex-direction: column; justify-content: flex-end; padding: 6px; font-size: 10px; line-height: 1.2; }
+  .swatch .n { font-weight: 700; }
+  .swatch .hex { font-family: var(--font-mono); opacity: .75; font-size: 9px; }
+  .eyebrow { margin: 0 0 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--surface-500); }
+  .sub { margin: 4px 0 0; color: var(--surface-500); font-size: 12px; }
+</style></head><body>
+<p class="eyebrow">Surface — Slate neutrals</p>
+<div class="row" id="row"></div>
+<p class="sub">All backgrounds, borders, text. Light mode anchors on 0/50/100; dark mode on 900/950.</p>
+<script>
+const shades=[0,50,100,200,300,400,500,600,700,800,900,950];
+const row=document.getElementById('row');
+shades.forEach(s=>{
+  const v=getComputedStyle(document.documentElement).getPropertyValue('--surface-'+s).trim();
+  const dark=s>=400;
+  const border=s<=100?'border:1px solid #e2e8f0;':'';
+  row.innerHTML+=`<div class="swatch" style="background:${v};color:${dark?'#fff':'#0f172a'};${border}"><div class="n">${s}</div><div class="hex">${v}</div></div>`;
+});
+</script></body></html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body { margin: 0; padding: 20px; background: #fff; font-family: var(--font-sans); color: var(--surface-900); }
+.eyebrow { margin: 0 0 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--surface-500); }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.card {
+  border-radius: 12px; padding: 14px;
+  border: 1px solid var(--surface-200);
+  background: #fff;
+  position: relative;
+}
+.card .top { display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--surface-500); }
+.name { margin-top: 10px; font-weight: 600; font-size: 13px; color: var(--surface-800); }
+.hex { margin-top: 4px; font-family: var(--font-mono); font-size: 10px; color: var(--surface-500); }
+.range { margin-top: 4px; font-size: 10px; color: var(--surface-400); }
+.tint-bar { height: 4px; border-radius: 99px; margin-top: 12px; }
+.sub { margin: 14px 0 0; color: var(--surface-500); font-size: 11px; line-height: 1.5; }
+</style></head><body>
+<p class="eyebrow">Semantic — Quiet status palette</p>
+<div class="grid">
+  <div class="card" style="background:#f0fdf4">
+    <div class="top"><span class="dot" style="background:#16a34a"></span><span class="lbl" style="color:#166534">Success</span></div>
+    <div class="name">Compliant</div>
+    <div class="hex">#16a34a · tint #f0fdf4</div>
+    <div class="range">score ≥ 80</div>
+    <div class="tint-bar" style="background:#16a34a"></div>
+  </div>
+  <div class="card" style="background:#fefce8">
+    <div class="top"><span class="dot" style="background:#ca8a04"></span><span class="lbl" style="color:#854d0e">Warning</span></div>
+    <div class="name">Needs Review</div>
+    <div class="hex">#ca8a04 · tint #fefce8</div>
+    <div class="range">score 60–79</div>
+    <div class="tint-bar" style="background:#ca8a04"></div>
+  </div>
+  <div class="card" style="background:#fff7ed">
+    <div class="top"><span class="dot" style="background:#c2410c"></span><span class="lbl" style="color:#9a3412">High</span></div>
+    <div class="name">At Risk</div>
+    <div class="hex">#c2410c · tint #fff7ed</div>
+    <div class="range">score 40–59</div>
+    <div class="tint-bar" style="background:#c2410c"></div>
+  </div>
+  <div class="card" style="background:#fef2f2">
+    <div class="top"><span class="dot" style="background:#b91c1c"></span><span class="lbl" style="color:#991b1b">Danger</span></div>
+    <div class="name">Critical</div>
+    <div class="hex">#b91c1c · tint #fef2f2</div>
+    <div class="range">score &lt; 40</div>
+    <div class="tint-bar" style="background:#b91c1c"></div>
+  </div>
+</div>
+<p class="sub">Muted dots + soft tint backgrounds. Full-saturation fills reserved for the score-gauge ring only.</p>
+</body></html>

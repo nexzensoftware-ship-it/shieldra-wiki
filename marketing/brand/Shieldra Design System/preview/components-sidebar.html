@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:16px;background:#f8fafc;font-family:var(--font-sans)}
+.eyebrow{margin:0 0 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-500)}
+.side{width:260px;background:#f8fafc;border:1px solid var(--surface-200);border-radius:10px;padding:8px;font-size:13px}
+.logo{display:flex;align-items:center;gap:8px;padding:8px 6px 12px}
+.logo img{width:28px;height:28px;border-radius:6px}
+.logo .name{font-weight:700;color:var(--surface-900);font-size:13px}
+.logo .sub{font-size:10px;font-weight:600;color:#2563eb}
+.sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-400);padding:10px 8px 4px;display:flex;align-items:center;gap:6px}
+.item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;color:var(--surface-700);cursor:pointer;margin:1px 0}
+.item .ic{width:14px;height:14px;background:currentColor;mask:linear-gradient(#fff,#fff);opacity:.8}
+.item.active{background:#dbeafe;color:#1d4ed8;font-weight:600}
+.item:hover:not(.active){background:#f1f5f9}
+</style></head><body>
+<p class="eyebrow">Sidebar navigation (product)</p>
+<div class="side">
+ <div class="logo"><img src="../assets/logo/icon-primary.svg" alt=""><div><div class="name">Shieldra</div><div class="sub">AI Platform</div></div></div>
+ <div class="item active">◉ Dashboard</div>
+ <div class="item">▤ HIPAA Roadmap</div>
+ <div class="sec">▣ Compliance ▾</div>
+ <div class="item">◈ Compliance</div>
+ <div class="item">☰ Controls</div>
+ <div class="item">✦ Regulatory Radar</div>
+ <div class="sec">△ Risk & Security ▾</div>
+ <div class="item">△ Risk Register</div>
+ <div class="item">▲ Incidents</div>
+</div>
+</body></html>

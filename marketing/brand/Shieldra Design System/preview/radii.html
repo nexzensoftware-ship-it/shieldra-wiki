@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:20px;background:#fff;font-family:var(--font-sans)}
+.eyebrow{margin:0 0 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-500)}
+.row{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+.r{aspect-ratio:1/1;background:linear-gradient(135deg,#dbeafe,#ede9fe);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--surface-700);font-size:10px;font-family:var(--font-mono)}
+.r b{color:var(--surface-900);font-size:12px;font-family:var(--font-sans);font-weight:700;margin-bottom:2px}
+.sub{margin:12px 0 0;color:var(--surface-500);font-size:12px}
+</style></head><body>
+<p class="eyebrow">Corner radii</p>
+<div class="row">
+ <div class="r" style="border-radius:4px"><b>xs</b>4</div>
+ <div class="r" style="border-radius:8px"><b>sm</b>8</div>
+ <div class="r" style="border-radius:12px"><b>md</b>12</div>
+ <div class="r" style="border-radius:16px"><b>lg</b>16</div>
+ <div class="r" style="border-radius:24px"><b>xl</b>24</div>
+ <div class="r" style="border-radius:32px"><b>2xl</b>32</div>
+ <div class="r" style="border-radius:40px"><b>3xl</b>40</div>
+ <div class="r" style="border-radius:9999px"><b>pill</b>∞</div>
+</div>
+<p class="sub">Product UI uses 8–12. Marketing surfaces 16–32. CTAs at 24. Pills always full.</p>
+</body></html>

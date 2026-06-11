@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:20px;background:#fff;font-family:var(--font-sans)}
+.eyebrow{margin:0 0 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-500)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.pulse{animation:p 1.6s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+</style></head><body>
+<p class="eyebrow">Badges & status pills</p>
+<div class="row">
+ <span class="badge" style="background:#dcfce7;color:#166534"><span class="dot" style="background:#22c55e"></span>Compliant</span>
+ <span class="badge" style="background:#fef9c3;color:#854d0e"><span class="dot" style="background:#eab308"></span>Warning</span>
+ <span class="badge" style="background:#ffedd5;color:#9a3412"><span class="dot" style="background:#f97316"></span>High</span>
+ <span class="badge" style="background:#fee2e2;color:#991b1b"><span class="dot" style="background:#ef4444"></span>Critical</span>
+ <span class="badge" style="background:#ecfeff;color:#155e75"><span class="dot pulse" style="background:#06b6d4"></span>Active · Live</span>
+ <span class="badge" style="background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff">AI ✦</span>
+ <span class="badge" style="background:#dbeafe;color:#1e40af">PRO</span>
+ <span class="badge" style="background:#ede9fe;color:#5b21b6">ENT</span>
+ <span class="badge" style="background:#f1f5f9;color:#475569">Draft</span>
+</div>
+</body></html>

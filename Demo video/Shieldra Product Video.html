@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Shieldra — Product Video</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="tokens.css"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #020617; height: 100%; font-family: 'Inter', system-ui, sans-serif; color: #f8fafc; overflow: hidden; }
+  #root { width: 100vw; height: 100vh; }
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="animations.jsx"></script>
+<script type="text/babel" src="scenes/Shared.jsx"></script>
+<script type="text/babel" src="scenes/SceneIntro.jsx"></script>
+<script type="text/babel" src="scenes/SceneDashboard.jsx"></script>
+<script type="text/babel" src="scenes/SceneJourney.jsx"></script>
+<script type="text/babel" src="scenes/SceneScan.jsx"></script>
+<script type="text/babel" src="scenes/SceneIntelligence.jsx"></script>
+<script type="text/babel" src="scenes/SceneAIAgent.jsx"></script>
+<script type="text/babel" src="scenes/SceneAuditTrail.jsx"></script>
+<script type="text/babel" src="scenes/SceneEvidence.jsx"></script>
+<script type="text/babel" src="scenes/SceneReports.jsx"></script>
+<script type="text/babel" src="scenes/SceneEvidencePack.jsx"></script>
+<script type="text/babel" src="scenes/SceneOutro.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+  // Scene schedule (seconds) — tight transitions, ~10s per scene, ~2min total
+  let cur = 0;
+  const S = {};
+  function slot(key, len) { S[key] = { start: cur, end: cur + len }; cur += len; }
+
+  slot('intro',        10);   // 0-10
+  slot('dashboard',    13);   // 10-23  — main overview
+  slot('journey',      12);   // 23-35  — 13 phases
+  slot('scan',         11);   // 35-46  — policy scanner
+  slot('intelligence', 12);   // 46-58  — AI briefing + peer bench
+  slot('aiagent',      14);   // 58-72  — chat assistant
+  slot('audittrail',   13);   // 72-85  — immutable log
+  slot('evidence',     10);   // 85-95  — evidence items feed (kept slim)
+  slot('reports',      11);   // 95-106 — generate reports
+  slot('evidencepack', 12);   // 106-118— 9-section pack
+  slot('outro',        10);   // 118-128
+
+  const TOTAL = cur;
+
+  function App() {
+    return (
+      <Stage width={1920} height={1080} duration={TOTAL} background="#020617" persistKey="shieldra-video">
+        <Sprite start={S.intro.start}        end={S.intro.end}>        <SceneIntro        /> </Sprite>
+        <Sprite start={S.dashboard.start}    end={S.dashboard.end}>    <SceneDashboard    /> </Sprite>
+        <Sprite start={S.journey.start}      end={S.journey.end}>      <SceneJourney      /> </Sprite>
+        <Sprite start={S.scan.start}         end={S.scan.end}>         <SceneScan         /> </Sprite>
+        <Sprite start={S.intelligence.start} end={S.intelligence.end}> <SceneIntelligence /> </Sprite>
+        <Sprite start={S.aiagent.start}      end={S.aiagent.end}>      <SceneAIAgent      /> </Sprite>
+        <Sprite start={S.audittrail.start}   end={S.audittrail.end}>   <SceneAuditTrail   /> </Sprite>
+        <Sprite start={S.evidence.start}     end={S.evidence.end}>     <SceneEvidence     /> </Sprite>
+        <Sprite start={S.reports.start}      end={S.reports.end}>      <SceneReports      /> </Sprite>
+        <Sprite start={S.evidencepack.start} end={S.evidencepack.end}> <SceneEvidencePack /> </Sprite>
+        <Sprite start={S.outro.start}        end={S.outro.end}>        <SceneOutro        /> </Sprite>
+      </Stage>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<App/>);
+</script>
+</body>
+</html>

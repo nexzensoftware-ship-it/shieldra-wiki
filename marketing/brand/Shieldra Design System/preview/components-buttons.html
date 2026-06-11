@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:20px;background:#fff;font-family:var(--font-sans)}
+.eyebrow{margin:0 0 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-500)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-family:var(--font-sans);cursor:pointer;border:0;transition:all .3s}
+.primary{color:#fff;padding:14px 28px;font-size:16px;border-radius:16px;background:linear-gradient(90deg,#2563eb,#7c3aed,#2563eb);background-size:200% 100%;box-shadow:0 0 20px rgba(59,130,246,.15)}
+.primary:hover{background-position:100% 0;box-shadow:0 0 40px rgba(59,130,246,.2)}
+.secondary{color:var(--surface-700);padding:14px 24px;font-size:16px;border-radius:16px;background:#fff;border:1px solid var(--surface-200)}
+.secondary:hover{border-color:var(--surface-300);background:rgba(255,255,255,.5)}
+.sm{padding:8px 14px;font-size:13px;border-radius:10px}
+.ghost{background:transparent;border:1px solid var(--surface-200);color:var(--surface-700)}
+</style></head><body>
+<p class="eyebrow">Buttons — Primary, Secondary, Small</p>
+<div class="row">
+ <button class="btn primary">Start Free Trial ›</button>
+ <button class="btn secondary">◉ Book a Demo</button>
+ <button class="btn primary sm">Run Scan</button>
+ <button class="btn secondary sm">Cancel</button>
+ <button class="btn ghost sm">Ghost</button>
+</div>
+</body></html>

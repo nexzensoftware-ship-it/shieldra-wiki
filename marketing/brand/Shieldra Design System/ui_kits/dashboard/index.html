@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shieldra — Dashboard UI Kit</title>
+  <link rel="stylesheet" href="../../colors_and_type.css">
+  <link rel="icon" href="../../assets/favicon/favicon-32.svg">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:#f8fafc; font-family:var(--font-sans); color:#0f172a; -webkit-font-smoothing:antialiased; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="Sidebar.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="ScoreGauge.jsx"></script>
+  <script type="text/babel" src="StatCard.jsx"></script>
+  <script type="text/babel" src="FrameworkProgress.jsx"></script>
+  <script type="text/babel" src="FindingsTable.jsx"></script>
+  <script type="text/babel">
+    function App() {
+      return (
+        <div data-screen-label="Dashboard" style={{ display:'flex', minHeight:'100vh' }}>
+          <Sidebar/>
+          <div style={{ flex:1, display:'flex', flexDirection:'column' }}>
+            <Header/>
+            <main style={{ padding:'28px 28px 48px', flex:1 }}>
+              {/* Page header */}
+              <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:24 }}>
+                <div>
+                  <div style={{ fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.1em', color:'#2563eb', marginBottom:6 }}>Good morning, Miriam</div>
+                  <h1 style={{ margin:0, fontSize:28, fontWeight:800, color:'#0f172a', letterSpacing:'-0.02em' }}>
+                    Your compliance posture is{' '}
+                    <span style={{
+                      background:'linear-gradient(90deg,#2563eb,#7c3aed,#2563eb)',
+                      backgroundSize:'200% 100%',
+                      WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent',
+                    }}>excellent</span>.
+                  </h1>
+                  <p style={{ margin:'6px 0 0', fontSize:14, color:'#64748b' }}>3 new findings and 2 regulatory alerts since yesterday. Last full scan 2 hours ago.</p>
+                </div>
+                <div style={{ display:'flex', gap:10 }}>
+                  <button style={{ padding:'10px 16px', borderRadius:10, background:'#fff', border:'1px solid #e2e8f0', fontSize:13, fontWeight:600, color:'#334155', cursor:'pointer', fontFamily:'inherit' }}>Export Report</button>
+                  <button style={{ padding:'10px 18px', borderRadius:10, background:'linear-gradient(90deg,#2563eb,#7c3aed,#2563eb)', backgroundSize:'200% 100%', border:0, fontSize:13, fontWeight:600, color:'#fff', cursor:'pointer', fontFamily:'inherit', boxShadow:'0 0 20px rgba(59,130,246,0.25)' }}>▶ Run Scan</button>
+                </div>
+              </div>
+
+              {/* 12-col grid */}
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(12, 1fr)', gap:18 }}>
+                <ScoreGauge/>
+                <div style={{ gridColumn:'span 8', display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gridAutoRows:'1fr', gap:14 }}>
+                  <StatGrid/>
+                </div>
+                <FindingsTable/>
+                <FrameworkProgress/>
+                <AIRadar/>
+              </div>
+            </main>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>

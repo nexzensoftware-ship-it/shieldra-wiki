@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: #fff; font-family: var(--font-sans); color: var(--surface-900); }
+  .eyebrow { margin: 0 0 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--surface-500); }
+
+  /* Top — logo beside its 4 source colors */
+  .anchors { display: grid; grid-template-columns: 120px repeat(4, 1fr); gap: 10px; align-items: stretch; margin-bottom: 14px; }
+  .logo-tile {
+    border-radius: 16px;
+    background: linear-gradient(180deg, #0C1222, #162032);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(12, 18, 34, 0.25), 0 0 20px rgba(34, 211, 238, 0.12);
+    overflow: hidden;
+  }
+  .logo-tile img { width: 80%; height: 80%; filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.35)); }
+  .anchor {
+    border-radius: 12px; padding: 10px 12px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 108px;
+    color: #fff;
+  }
+  .anchor .role { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; opacity: 0.85; }
+  .anchor .name { font-size: 12px; font-weight: 700; }
+  .anchor .hex { font-family: var(--font-mono); font-size: 11px; font-weight: 600; opacity: 0.9; }
+  .anchor.navy { background: linear-gradient(180deg, #0C1222, #162032); }
+  .anchor.blue { background: #3B82F6; }
+  .anchor.teal { background: #06B6D4; }
+  .anchor.cyan { background: #22D3EE; color: #0C1222; }
+
+  /* The gradient used in the logo itself — previewed honestly */
+  .logo-grad-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .grad {
+    height: 38px; border-radius: 10px; position: relative;
+    border: 1px solid var(--surface-100);
+  }
+  .grad .tag {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    padding: 0 12px; color: #fff; font-size: 11px; font-weight: 600;
+    gap: 8px; text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+  }
+  .grad .tag .mono { font-family: var(--font-mono); opacity: 0.9; margin-left: auto; font-weight: 500; }
+  .grad.g1 { background: linear-gradient(135deg, #06B6D4, #3B82F6); }
+  .grad.g2 { background: linear-gradient(180deg, #22D3EE, #0EA5E9); }
+
+  /* Ramp built from the logo stops */
+  .ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: 5px; }
+  .swatch {
+    border-radius: 8px; aspect-ratio: 1/1.05;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 6px 7px; line-height: 1.2;
+  }
+  .swatch .n { font-weight: 700; font-size: 10px; }
+  .swatch .hx { font-family: var(--font-mono); opacity: .8; font-size: 9px; }
+
+  .sub { margin: 10px 0 0; color: var(--surface-500); font-size: 11px; line-height: 1.5; }
+  .sub b { color: var(--surface-700); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Brand — Direct from the Shieldra logo</p>
+
+<div class="anchors">
+  <div class="logo-tile">
+    <img src="../assets/logo/icon-primary.svg" alt="Shieldra">
+  </div>
+  <div class="anchor navy">
+    <div class="role">Plate / BG</div>
+    <div><div class="name">Midnight</div><div class="hex">#0C1222 → #162032</div></div>
+  </div>
+  <div class="anchor teal">
+    <div class="role">G1 stop A</div>
+    <div><div class="name">Shield Teal</div><div class="hex">#06B6D4</div></div>
+  </div>
+  <div class="anchor blue">
+    <div class="role">G1 stop B</div>
+    <div><div class="name">Signal Blue</div><div class="hex">#3B82F6</div></div>
+  </div>
+  <div class="anchor cyan">
+    <div class="role">Node</div>
+    <div><div class="name">Node Cyan</div><div class="hex">#22D3EE → #0EA5E9</div></div>
+  </div>
+</div>
+
+<div class="logo-grad-row">
+  <div class="grad g1"><span class="tag">G1 · Outline / shield <span class="mono">#06B6D4 → #3B82F6 · 135°</span></span></div>
+  <div class="grad g2"><span class="tag">G2 · Nodes <span class="mono">#22D3EE → #0EA5E9 · 180°</span></span></div>
+</div>
+
+<div class="ramp" id="ramp"></div>
+
+<p class="sub">Ramp anchors on <b>Signal Blue (#3B82F6)</b> at the 500 step. Mix G1 for CTAs and outlines; G2 for node / live / active highlights. The logo's two gradients are the only gradients used at visible scale.</p>
+
+<script>
+const shades=[50,100,200,300,400,500,600,700,800,900,950];
+const ramp=document.getElementById('ramp');
+shades.forEach(s=>{
+  const v=getComputedStyle(document.documentElement).getPropertyValue('--brand-'+s).trim();
+  const dark=s>=400;
+  ramp.innerHTML+=`<div class="swatch" style="background:${v};color:${dark?'#fff':'#0f172a'}"><div class="n">${s}</div><div class="hx">${v}</div></div>`;
+});
+</script>
+</body>
+</html>

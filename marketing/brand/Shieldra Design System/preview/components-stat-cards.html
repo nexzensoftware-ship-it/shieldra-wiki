@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body{margin:0;padding:20px;background:#f8fafc;font-family:var(--font-sans)}
+.eyebrow{margin:0 0 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--surface-500)}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px;box-shadow:var(--shadow-sm)}
+.top{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.tile{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--surface-500)}
+.num{font-size:28px;font-weight:700;color:var(--surface-900);letter-spacing:-.02em}
+.unit{font-size:14px;color:#06b6d4;font-weight:600}
+.delta{font-size:12px;color:#16a34a;margin-top:4px;font-weight:600}
+</style></head><body>
+<p class="eyebrow">Stat cards (dashboard)</p>
+<div class="row">
+ <div class="card">
+  <div class="top"><div class="tile" style="background:#ecfeff;color:#0891b2">◈</div><div class="lbl">Compliance Score</div></div>
+  <div class="num">98<span class="unit">%</span></div>
+  <div class="delta">+2.1 this week</div>
+ </div>
+ <div class="card">
+  <div class="top"><div class="tile" style="background:#ede9fe;color:#7c3aed">▲</div><div class="lbl">HIPAA Readiness</div></div>
+  <div class="num">99.2<span class="unit">%</span></div>
+  <div class="delta">All 3 safeguards</div>
+ </div>
+ <div class="card">
+  <div class="top"><div class="tile" style="background:#dbeafe;color:#2563eb">≡</div><div class="lbl">Controls Monitored</div></div>
+  <div class="num">324</div>
+  <div class="delta">· Active</div>
+ </div>
+</div>
+</body></html>
