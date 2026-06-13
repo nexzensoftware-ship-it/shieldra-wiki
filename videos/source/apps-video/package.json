@@ -1,0 +1,24 @@
+{
+  "name": "@shieldra/video",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "preview": "remotion preview src/index.ts",
+    "render": "remotion render src/index.ts LogoAnimation out/shieldra-logo.mp4",
+    "render:demo": "node scripts/render-demo.js && node scripts/transcode-demo.js",
+    "render:hipaa": "STAGE_DIR=\"$(pwd)/What is HIPAA_\" STAGE_HTML=\"What is HIPAA.html\" STAGE_DURATION_S=180 STAGE_PERSIST_KEY=hipaa-video-v2 STAGE_SLUG=what-is-hipaa node scripts/render-stage-video.js && STAGE_SLUG=what-is-hipaa STAGE_OUTPUT=\"$(pwd)/out/what-is-hipaa.mp4\" STAGE_SILENT_AUDIO=1 STAGE_CRF=18 node scripts/transcode-stage-video.js",
+    "render:soc2": "STAGE_DIR=\"$(pwd)/What is soc2\" STAGE_HTML=\"What is SOC 2.html\" STAGE_DURATION_S=250 STAGE_PERSIST_KEY=soc2vid STAGE_SLUG=what-is-soc2 STAGE_VIEWPORT_HEIGHT=1080 STAGE_MOUNT_SELECTOR=\".stage-canvas\" STAGE_EXTRA_CSS=\".chrome{display:none !important;}\" node scripts/render-stage-video.js && STAGE_SLUG=what-is-soc2 STAGE_OUTPUT=\"$(pwd)/out/what-is-soc2.mp4\" STAGE_SILENT_AUDIO=1 STAGE_CRF=18 node scripts/transcode-stage-video.js",
+    "narrate": "node scripts/generate-narration.js",
+    "narrate:hipaa": "node scripts/generate-narration.js \"What is HIPAA_/narration.spec.json\""
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0",
+    "@remotion/cli": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/react": "^19.0.0"
+  }
+}
