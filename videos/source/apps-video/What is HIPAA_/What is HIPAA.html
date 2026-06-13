@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What is HIPAA? — A Shieldra Primer</title>
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; height:100%; background:#000; overflow:hidden; }
+  #root { position: fixed; inset: 0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="animations.jsx"></script>
+<script type="text/babel" src="scenes/common.jsx"></script>
+<script type="text/babel" src="scenes/scene1_title.jsx"></script>
+<script type="text/babel" src="scenes/scene2_def.jsx"></script>
+<script type="text/babel" src="scenes/scene3_stats.jsx"></script>
+<script type="text/babel" src="scenes/scene4_shieldra.jsx"></script>
+<script type="text/babel" src="scenes/scene5_extra.jsx"></script>
+
+<script type="text/babel">
+// ─────────────────────────────────────────────────────────────
+// Timeline (total 180s = 3:00 — dense and fast)
+// ─────────────────────────────────────────────────────────────
+//   0 –  5   Shieldra intro logo
+//   5 – 13   Title "What is HIPAA?"
+//  13 – 30   Definition + acronym
+//  30 – 48   PHI (18 identifiers)
+//  48 – 65   Three Rules (Privacy/Security/Breach)
+//  65 – 88   Why it matters (stats)
+//  88 –105   Penalties tiers
+// 105 –122   Real breach cases
+// 122 –139   Who must comply
+// 139 –152   Patient Rights
+// 152 –172   How Shieldra helps
+// 172 –180   Outro + CTA
+// ─────────────────────────────────────────────────────────────
+
+// Narration script — timed captions. Each entry: {at, text}
+// Also drives speechSynthesis when audio is ON.
+const NARRATION = [
+  { at:  5, text: "What is HIPAA? In the next three minutes, here's everything your business needs to know." },
+  { at: 13, text: "HIPAA is the Health Insurance Portability and Accountability Act." },
+  { at: 19, text: "Signed into law in 1996, it's the U.S. federal standard for protecting sensitive patient health information." },
+  { at: 27, text: "And it holds every healthcare organization legally accountable." },
+  { at: 30, text: "At the core of HIPAA is something called PHI — Protected Health Information." },
+  { at: 36, text: "The law covers 18 specific identifiers. Names, dates, phone numbers, social security numbers, medical records, biometrics — even photos and X-rays." },
+  { at: 46, text: "Anything that can link a person to their health data." },
+  { at: 48, text: "HIPAA rests on three pillars." },
+  { at: 51, text: "The Privacy Rule controls who can see PHI. The Security Rule requires safeguards for electronic PHI. And the Breach Notification Rule forces disclosure within 60 days of an incident." },
+  { at: 65, text: "So why does this matter? Healthcare is now the number one target for cybercrime." },
+  { at: 71, text: "A single medical record sells for up to one thousand dollars on the dark web — fifty times more than a credit card." },
+  { at: 78, text: "In 2023 alone, 133 million Americans had their health records breached. 725 major incidents. Average cost: $10.9 million each." },
+  { at: 88, text: "Violations are measured per record. The Office for Civil Rights enforces a four-tier penalty structure." },
+  { at: 94, text: "Willful neglect, uncorrected, can cost over two million dollars per violation — plus criminal charges up to ten years in prison." },
+  { at: 105, text: "These aren't theoretical. Anthem paid 16 million after a phishing attack exposed 78 million records." },
+  { at: 112, text: "Premera, Excellus, Advocate — each one settled millions because basic controls were missing." },
+  { at: 122, text: "So who has to comply? Two groups." },
+  { at: 125, text: "Covered Entities — hospitals, clinics, insurers, pharmacies." },
+  { at: 130, text: "And Business Associates — any vendor that touches PHI. Cloud providers, IT firms, SaaS platforms, analytics vendors." },
+  { at: 136, text: "Both groups are directly liable." },
+  { at: 139, text: "HIPAA also grants patients six core rights — to access, amend, restrict, and be notified about their own data." },
+  { at: 148, text: "Your business must honor each one on request." },
+  { at: 152, text: "This is where Shieldra comes in." },
+  { at: 155, text: "Shieldra is the regulatory AI that automates HIPAA end-to-end. It scans your policies. Monitors 324 controls across your infrastructure. Writes the fix when something drifts. And keeps audit-ready evidence for every control." },
+  { at: 170, text: "HIPAA compliance, on autopilot." },
+  { at: 172, text: "Shieldra. The regulatory AI that shields your business." },
+];
+
+// Narration controller — uses Web Speech API, synced to video time
+function useNarration(enabled) {
+  const { time } = useTimeline();
+  const spokenRef = React.useRef(new Set());
+  const lastTimeRef = React.useRef(0);
+
+  React.useEffect(() => {
+    // Detect big jumps (scrub) and reset spoken tracking
+    if (Math.abs(time - lastTimeRef.current) > 1.5) {
+      try { window.speechSynthesis.cancel(); } catch {}
+      spokenRef.current = new Set();
+      // re-mark everything before current time as spoken to avoid replay burst
+      NARRATION.forEach(n => { if (n.at < time - 0.2) spokenRef.current.add(n.at); });
+    }
+    lastTimeRef.current = time;
+
+    if (!enabled || !window.speechSynthesis) return;
+
+    for (const n of NARRATION) {
+      if (time >= n.at && time < n.at + 0.6 && !spokenRef.current.has(n.at)) {
+        spokenRef.current.add(n.at);
+        const u = new SpeechSynthesisUtterance(n.text);
+        u.rate = 1.05; u.pitch = 1.0; u.volume = 1;
+        // Prefer a natural English voice
+        const voices = window.speechSynthesis.getVoices();
+        const pref = voices.find(v => /en-US|en_US/i.test(v.lang) && /Samantha|Google US|Jenny|Aria|Natural/i.test(v.name))
+          || voices.find(v => /en-US|en_US/i.test(v.lang))
+          || voices[0];
+        if (pref) u.voice = pref;
+        try { window.speechSynthesis.speak(u); } catch {}
+      }
+    }
+  }, [time, enabled]);
+}
+
+// Caption bar (always visible when there's a current line)
+function Captions() {
+  const { time } = useTimeline();
+  // Find the latest line whose start time has passed
+  let current = null;
+  for (const n of NARRATION) {
+    if (time >= n.at) current = n;
+    else break;
+  }
+  // Find next line to know when to fade out
+  const idx = current ? NARRATION.indexOf(current) : -1;
+  const next = idx >= 0 && idx < NARRATION.length - 1 ? NARRATION[idx+1] : null;
+  const endAt = next ? next.at : current ? current.at + 8 : 0;
+  if (!current || time > endAt + 0.3) return null;
+
+  // Fade in/out
+  const fadeIn = clamp((time - current.at) / 0.25, 0, 1);
+  const fadeOut = next ? clamp((next.at - time) / 0.3, 0, 1) : 1;
+  const op = Math.min(fadeIn, fadeOut);
+
+  return (
+    <div style={{
+      position:'absolute', left:'50%', bottom: 18,
+      transform:`translateX(-50%) translateY(${(1-fadeIn)*12}px)`,
+      maxWidth: 1500, padding:'14px 28px',
+      background:'rgba(2,6,23,0.82)',
+      backdropFilter:'blur(12px)',
+      border:'1px solid rgba(148,163,184,0.2)',
+      borderRadius: 16,
+      color:'white',
+      fontSize: 24, fontWeight: 500, lineHeight: 1.35,
+      textAlign:'center',
+      opacity: op,
+      boxShadow:'0 10px 40px rgba(0,0,0,0.5)',
+      zIndex: 40,
+      fontFamily:'Inter, sans-serif',
+    }}>
+      {current.text}
+    </div>
+  );
+}
+
+// Audio toggle button overlaid on stage
+function AudioToggle({ enabled, onToggle }) {
+  return (
+    <button
+      onClick={onToggle}
+      style={{
+        position:'absolute', top: 24, right: 32,
+        padding:'10px 18px',
+        background: enabled ? 'rgba(34,211,238,0.15)' : 'rgba(2,6,23,0.7)',
+        backdropFilter:'blur(12px)',
+        border: `1px solid ${enabled ? 'rgba(34,211,238,0.5)' : 'rgba(148,163,184,0.3)'}`,
+        borderRadius: 999,
+        color: enabled ? '#22d3ee' : 'rgba(226,232,240,0.85)',
+        fontSize: 15, fontWeight: 700, letterSpacing:'0.1em', textTransform:'uppercase',
+        cursor:'pointer', zIndex: 60,
+        display:'flex', alignItems:'center', gap: 10,
+        fontFamily:'Inter, sans-serif',
+      }}
+    >
+      <span style={{
+        width: 10, height: 10, borderRadius: 5,
+        background: enabled ? '#22d3ee' : 'rgba(148,163,184,0.6)',
+        boxShadow: enabled ? '0 0 10px #22d3ee' : 'none',
+      }}/>
+      {enabled ? 'Voiceover On' : 'Voiceover Off'}
+    </button>
+  );
+}
+
+function NarrationLayer({ enabled }) {
+  useNarration(enabled);
+  return null;
+}
+
+function Video() {
+  const [audioOn, setAudioOn] = React.useState(false);
+  const [captionsOn, setCaptionsOn] = React.useState(true);
+
+  // Load voices once (fires async)
+  React.useEffect(() => {
+    if (window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+    // Stop speech on unload
+    return () => { try { window.speechSynthesis.cancel(); } catch {} };
+  }, []);
+
+  const toggleAudio = () => {
+    const next = !audioOn;
+    setAudioOn(next);
+    if (!next) { try { window.speechSynthesis.cancel(); } catch {} }
+  };
+
+  return (
+    <Stage
+      width={1920}
+      height={1080}
+      duration={180}
+      fps={60}
+      loop={false}
+      autoplay={true}
+      background="#000"
+      persistKey="hipaa-video-v2"
+    >
+      <Sprite start={0}   end={5}>   <SceneIntroLogo /></Sprite>
+      <Sprite start={5}   end={13}>  <SceneTitle /></Sprite>
+      <Sprite start={13}  end={30}>  <SceneDefinition /></Sprite>
+      <Sprite start={30}  end={48}>  <ScenePHI /></Sprite>
+      <Sprite start={48}  end={65}>  <SceneRules /></Sprite>
+      <Sprite start={65}  end={88}>  <SceneImportance /></Sprite>
+      <Sprite start={88}  end={105}> <ScenePenalties /></Sprite>
+      <Sprite start={105} end={122}> <SceneBreaches /></Sprite>
+      <Sprite start={122} end={139}> <SceneWho /></Sprite>
+      <Sprite start={139} end={152}> <ScenePatientRights /></Sprite>
+      <Sprite start={152} end={172}> <SceneShieldra /></Sprite>
+      <Sprite start={172} end={180}> <SceneOutroLogo /></Sprite>
+
+      <ChapterBadge />
+      <NarrationLayer enabled={audioOn} />
+      {captionsOn && <Captions />}
+      <AudioToggle enabled={audioOn} onToggle={toggleAudio} />
+    </Stage>
+  );
+}
+
+function ChapterBadge() {
+  const t = useTime();
+  const chapters = [
+    { s: 5,   e: 13,  label: 'Intro' },
+    { s: 13,  e: 30,  label: '01 · Definition' },
+    { s: 30,  e: 48,  label: '02 · What is PHI?' },
+    { s: 48,  e: 65,  label: '03 · Three Rules' },
+    { s: 65,  e: 88,  label: '04 · Why it Matters' },
+    { s: 88,  e: 105, label: '05 · The Cost' },
+    { s: 105, e: 122, label: '06 · Enforcement' },
+    { s: 122, e: 139, label: '07 · Who Must Comply' },
+    { s: 139, e: 152, label: '08 · Patient Rights' },
+    { s: 152, e: 172, label: '09 · The Shieldra Way' },
+  ];
+  const current = chapters.find(c => t >= c.s && t < c.e);
+  if (!current || t < 5 || t >= 172) return null;
+  const localT = t - current.s;
+  const op = localT < 0.3 ? localT / 0.3 : 1;
+  return (
+    <div style={{
+      position:'absolute', top: 24, left: 32,
+      padding:'10px 20px',
+      background:'rgba(10,15,35,0.75)',
+      backdropFilter:'blur(12px)',
+      border:'1px solid rgba(148,163,184,0.2)',
+      borderRadius: 999,
+      color:'rgba(226,232,240,0.9)',
+      fontSize: 15, fontWeight: 700, letterSpacing:'0.15em',
+      textTransform:'uppercase', fontFamily:'Inter, sans-serif',
+      display:'flex', alignItems:'center', gap: 12,
+      opacity: op, zIndex: 50,
+    }}>
+      <span style={{ width:8, height:8, borderRadius:4, background:'#22d3ee',
+        boxShadow:'0 0 10px #22d3ee' }}/>
+      {current.label}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Video />);
+</script>
+</body>
+</html>

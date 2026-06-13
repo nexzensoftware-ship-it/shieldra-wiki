@@ -1,0 +1,79 @@
+{
+  "name": "what-is-hipaa",
+  "totalDurationSec": 180,
+  "outputDir": "What is HIPAA_/audio",
+  "trackOutput": "out/what-is-hipaa-narration.mp3",
+  "scenes": [
+    {
+      "id": "title",
+      "start": 5,
+      "end": 13,
+      "text": "If your business touches health data, one law decides whether you keep operating — or get fined into the ground."
+    },
+    {
+      "id": "definition",
+      "start": 13,
+      "end": 30,
+      "text": "HIPAA. The Health Insurance Portability and Accountability Act. A nineteen-ninety-six U.S. federal law, signed by President Bill Clinton, that protects sensitive patient health information from being shared without consent."
+    },
+    {
+      "id": "phi",
+      "start": 30,
+      "end": 48,
+      "rate": "+0%",
+      "text": "At the center of HIPAA is something called Protected Health Information — or PHI. Names, diagnoses, treatment records, billing data, even an IP address tied to a patient. If it can identify someone and it lives in a healthcare context, HIPAA covers it."
+    },
+    {
+      "id": "rules",
+      "start": 48,
+      "end": 65,
+      "text": "HIPAA stands on three pillars. The Privacy Rule — who can see PHI. The Security Rule — how PHI is stored and transmitted. And the Breach Notification Rule — what you have to do, and how fast, when something goes wrong."
+    },
+    {
+      "id": "importance",
+      "start": 65,
+      "end": 88,
+      "text": "And things go wrong constantly. Healthcare data breaches have nearly tripled since two-thousand-eighteen. In twenty-twenty-four alone, more than two hundred and seventy-five million patient records were exposed in the United States — the highest number ever recorded. Healthcare is now the most-targeted industry on the planet."
+    },
+    {
+      "id": "penalties",
+      "start": 88,
+      "end": 105,
+      "rate": "+5%",
+      "text": "The fines reflect that. A single HIPAA violation can cost up to one-point-nine million dollars. Repeat or willful neglect can lead to criminal charges — and yes, jail time. This isn't theoretical. The Office for Civil Rights enforces it, and they are auditing."
+    },
+    {
+      "id": "breaches",
+      "start": 105,
+      "end": 122,
+      "rate": "+0%",
+      "text": "And when O-C-R audits, no one is too big. Anthem. Premera. Excellus. Even Memorial Healthcare. Settlements in the tens of millions. The lesson is simple: scale is not a defense. If you handle PHI, the rules apply to you."
+    },
+    {
+      "id": "who",
+      "start": 122,
+      "end": 139,
+      "rate": "+0%",
+      "text": "HIPAA reaches far beyond hospitals. Insurance carriers. Telehealth apps. Billing companies. Cloud vendors. Pharmacies. Even the analytics tool that touches one patient record — they're all on the hook as covered entities or business associates."
+    },
+    {
+      "id": "rights",
+      "start": 139,
+      "end": 152,
+      "rate": "+8%",
+      "text": "And HIPAA gives patients six core rights. The right to access their records. To request corrections. To know who's seen them. To restrict sharing. To get a copy. And to file a complaint — directly to the regulator."
+    },
+    {
+      "id": "shieldra",
+      "start": 152,
+      "end": 172,
+      "text": "That's where Shieldra comes in. HIPAA compliance, on autopilot. Shieldra is the regulatory AI that scans your policies, monitors your infrastructure, finds the gaps before an auditor does — and writes the fix, opens the ticket, and closes the loop. Automatically."
+    },
+    {
+      "id": "outro",
+      "start": 172,
+      "end": 180,
+      "text": "Shieldra. The regulatory AI that shields your business. Visit shieldra dot com — or book a demo today."
+    }
+  ]
+}

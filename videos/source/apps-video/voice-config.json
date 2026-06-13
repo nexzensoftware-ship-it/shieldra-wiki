@@ -1,0 +1,13 @@
+{
+  "$comment": "Default voice settings for all Shieldra video narration. Used by scripts/generate-narration.js and any future TTS pipeline. Voice picked April 2026 — Andrew Multilingual is warm, confident, and authentic, which fits Shieldra's compliance-explainer tone. Generated via edge-tts (free, no API key).",
+  "provider": "edge-tts",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "-5%",
+  "volume": "+0%",
+  "pitch": "+0Hz",
+  "alternates": {
+    "warm_female": "en-US-AvaMultilingualNeural",
+    "casual_male": "en-US-BrianMultilingualNeural",
+    "cheerful_female": "en-US-EmmaMultilingualNeural"
+  }
+}
